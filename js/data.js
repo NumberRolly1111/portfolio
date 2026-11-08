@@ -51,20 +51,6 @@ window.PROJECTS = [
     links: [{ label: "Код на GitHub", url: "https://github.com/NumberRolly1111/study-on" }]
   },
   {
-    id: "username-hunter",
-    title: "Username Hunter",
-    type: "Telegram-бот",
-    cat: "telegram",
-    glyph: "UH",
-    c1: "#7a2bd0",
-    c2: "#0b1b4d",
-    featured: true,
-    short: "Публичный бот ищет свободные юзернеймы по настройкам.",
-    desc: "Бот для поиска свободных юзернеймов. Можно выбрать длину от 5 до 12 символов, режим слов, пар слов, брендов или русских слов, получить оценку имени от 0 до 10 и настроить фильтры: «содержит», «исключить буквы», «без повторов». Есть подписка Pro через Telegram Stars.",
-    stack: ["Telegram Bot API", "Telegram Stars"],
-    links: [{ label: "Открыть бота", url: "https://t.me/dixyfinder_bot" }]
-  },
-  {
     id: "kotiko",
     title: "Kotiko",
     type: "Сайт котокафе",
@@ -72,11 +58,11 @@ window.PROJECTS = [
     glyph: "K",
     c1: "#c4562b",
     c2: "#3b1230",
-    featured: false,
+    featured: true,
     short: "Сайт котокафе в Астане.",
     desc: "Сайт котокафе Kotiko в Астане на чистых HTML, CSS и JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
-    links: []
+    links: [{ label: "Открыть сайт", url: "https://kotiko.w-smp.in" }]
   },
   {
     id: "w-plugins",

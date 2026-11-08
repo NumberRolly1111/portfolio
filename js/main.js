@@ -19,22 +19,24 @@
   function buildLayout() {
     var hdr = document.getElementById("site-header");
     if (hdr) {
-      var links = NAV.map(function (n) {
-        return '<a href="' + n[1] + '"' + (n[0] === page ? ' aria-current="page"' : "") + ">" + n[2] + "</a>";
+      var items = NAV.filter(function (n) { return n[0] !== "contacts"; }).concat([["contacts", "contacts.html", "Обсудить проект"]]);
+      var mlinks = items.map(function (n, i) {
+        return '<a href="' + n[1] + '" style="--i:' + i + '"' + (n[0] === page ? ' aria-current="page"' : "") + ">" + n[2] + "</a>";
       }).join("");
-      var mlinks = NAV.map(function (n, i) {
-        return '<a href="' + n[1] + '" style="--i:' + i + '">' + n[2] + "</a>";
-      }).join("");
+      var ICON_TG = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.2L11 20l3-4.2 5 3.7L21 4Z"/><path d="m9 13.2 12-9.2"/></svg>';
+      var ICON_GH = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.03 1.52 1.03.9 1.52 2.34 1.08 2.9.83.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.1-4.55-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>';
       hdr.innerHTML =
         '<div class="aurora" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>' +
-        '<header class="hdr"><div class="hdr-in">' +
+        '<header class="hdr">' +
         '<a class="logo" href="index.html" aria-label="W-Dev, на главную">W<i>-</i>Dev</a>' +
-        '<nav class="nav" aria-label="Основное меню">' + links + "</nav>" +
-        '<a class="btn sm" href="contacts.html">Обсудить проект</a>' +
-        '<button class="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>' +
-        "</div></header>" +
-        '<div class="mnav" aria-hidden="true">' + mlinks +
-        '<a href="' + TG + '" style="--i:' + NAV.length + '" target="_blank" rel="noopener">Telegram</a></div>';
+        '<div class="clock" aria-hidden="true"><span>АСТ<b data-tz="5">--:--</b></span><span>МСК<b data-tz="3">--:--</b></span></div>' +
+        '<button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false"><span class="lbl">Меню</span><span class="lines"><i></i><i></i></span></button>' +
+        "</header>" +
+        '<nav class="mnav" aria-label="Основное меню" aria-hidden="true">' + mlinks +
+        '<div class="soc">' +
+        '<a href="' + TG + '" style="--i:' + (items.length) + '" target="_blank" rel="noopener" aria-label="Telegram">' + ICON_TG + "</a>" +
+        '<a href="' + GH + '" style="--i:' + (items.length + 1) + '" target="_blank" rel="noopener" aria-label="GitHub">' + ICON_GH + "</a>" +
+        "</div></nav>";
     }
 
     var ftr = document.getElementById("site-footer");
@@ -61,19 +63,35 @@
 
   /* ---------- меню ---------- */
   function initMenu() {
-    var b = document.querySelector(".burger");
+    var b = document.querySelector(".menu-btn");
     var m = document.querySelector(".mnav");
+    var h = document.querySelector(".hdr");
     if (!b) return;
+    var lbl = b.querySelector(".lbl");
     function set(open) {
       document.body.classList.toggle("menu-open", open);
       b.setAttribute("aria-expanded", open ? "true" : "false");
       b.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+      if (lbl) lbl.textContent = open ? "Закрыть" : "Меню";
       if (m) m.setAttribute("aria-hidden", open ? "false" : "true");
       document.body.style.overflow = open ? "hidden" : "";
     }
     b.addEventListener("click", function () { set(!document.body.classList.contains("menu-open")); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
-    window.addEventListener("resize", function () { if (window.innerWidth > 980) set(false); });
+    function onScroll() { if (h) h.classList.toggle("scrolled", window.scrollY > 24); }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // время астаны (UTC+5) и москвы (UTC+3)
+    function tick() {
+      var now = Date.now();
+      document.querySelectorAll(".clock b").forEach(function (el) {
+        var d = new Date(now + Number(el.getAttribute("data-tz")) * 3600000);
+        el.textContent = String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0");
+      });
+    }
+    tick();
+    setInterval(tick, 15000);
   }
 
   /* ---------- плавный переход между страницами ---------- */
@@ -88,7 +106,7 @@
       if (url.pathname === location.pathname && url.search === location.search) return;
       e.preventDefault();
       document.body.classList.add("leaving");
-      setTimeout(function () { location.href = a.href; }, 800);
+      setTimeout(function () { location.href = a.href; }, 560);
     });
     window.addEventListener("pageshow", function (e) {
       if (e.persisted) {
