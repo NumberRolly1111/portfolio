@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Контакты — W-Dev</title>
+<meta name="description" content="Связаться с W-Dev: Telegram, GitHub и короткая форма для обсуждения проекта.">
+<meta name="theme-color" content="#050507">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=Unbounded:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.className += " js";</script>
+</head>
+<body data-page="contacts">
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-hero">
+    <div class="wrap">
+      <h1 data-split>Обсудим ваш проект</h1>
+      <p data-reveal style="--d:.6s">Заполните форму, и в Telegram откроется готовое сообщение. Или напишите мне напрямую.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap contact">
+      <form class="form" id="brief" data-reveal>
+        <div class="field">
+          <label for="name">Как вас зовут</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="kind">Что нужно сделать</label>
+          <select id="kind" name="kind">
+            <option>Сайт</option>
+            <option>Игра или Telegram Mini App</option>
+            <option>Дизайн интерфейса</option>
+            <option>Telegram-бот или плагин</option>
+            <option>Пока не знаю</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="about">Расскажите о задаче</label>
+          <textarea id="about" name="about" required></textarea>
+        </div>
+        <div class="field">
+          <label for="contact">Другой способ связи (по желанию)</label>
+          <input id="contact" name="contact" type="text" placeholder="Например, номер для WhatsApp">
+        </div>
+        <button class="btn" type="submit">Отправить в Telegram</button>
+        <p class="note">Форма не хранит данные: она собирает сообщение и открывает чат со мной.</p>
+      </form>
+
+      <div class="links" data-reveal style="--d:.25s">
+        <a class="link-card" href="https://t.me/bauyrzhanov_12_" target="_blank" rel="noopener">
+          <div><b>Telegram</b><span>@bauyrzhanov_12_</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="link-card" href="https://github.com/NumberRolly1111" target="_blank" rel="noopener">
+          <div><b>GitHub</b><span>NumberRolly1111</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
