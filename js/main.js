@@ -43,6 +43,7 @@
         '<div class="aurora" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>' +
         '<header class="hdr">' +
         '<a class="logo" href="/" aria-label="GwebStudio, на главную">' + LOGO + "</a>" +
+        '<div class="clock" aria-hidden="true"><span>АСТ<b data-tz="5">--:--</b></span><span>МСК<b data-tz="3">--:--</b></span></div>' +
         '<button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false"><span class="lbl">Меню</span><span class="lines"><i></i><i></i></span></button>' +
         "</header>" +
         '<nav class="mnav" aria-label="Основное меню" aria-hidden="true">' + mlinks +
@@ -89,6 +90,17 @@
     function onScroll() { if (h) h.classList.toggle("scrolled", window.scrollY > 24); }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    // время астаны (UTC+5) и москвы (UTC+3)
+    function tick() {
+      var now = Date.now();
+      document.querySelectorAll(".clock b").forEach(function (el) {
+        var d = new Date(now + Number(el.getAttribute("data-tz")) * 3600000);
+        el.textContent = String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0");
+      });
+    }
+    tick();
+    setInterval(tick, 15000);
   }
 
   /* ---------- плавный переход между страницами ---------- */
@@ -241,12 +253,21 @@
 
   /* ---------- faq ---------- */
   function initFaq() {
-    document.querySelectorAll(".qa").forEach(function (qa) {
+    var all = document.querySelectorAll(".qa");
+    all.forEach(function (qa) {
       var b = qa.querySelector("button");
       b.setAttribute("aria-expanded", qa.classList.contains("open") ? "true" : "false");
       b.addEventListener("click", function () {
-        var open = qa.classList.toggle("open");
-        b.setAttribute("aria-expanded", open ? "true" : "false");
+        var willOpen = !qa.classList.contains("open");
+        // открыт только один вопрос: остальные закрываются
+        all.forEach(function (o) {
+          o.classList.remove("open");
+          o.querySelector("button").setAttribute("aria-expanded", "false");
+        });
+        if (willOpen) {
+          qa.classList.add("open");
+          b.setAttribute("aria-expanded", "true");
+        }
       });
     });
   }

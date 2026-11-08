@@ -113,9 +113,10 @@ body.leaving .veil { opacity: 1; -webkit-backdrop-filter: blur(22px); backdrop-f
 .logo { font: 500 20px/1 var(--display); letter-spacing: -.04em; white-space: nowrap; transition: color 0.38s var(--ease); }
 .logo i { font-style: normal; color: var(--accent); }
 .logo:hover { color: var(--accent); }
-.clock { margin-left: auto; display: flex; gap: 20px; font: 400 13px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: #5d6272; letter-spacing: .03em; }
+.hdr .logo { margin-right: auto; }
+.clock { display: flex; gap: 20px; font: 400 13px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: #5d6272; letter-spacing: .03em; }
 .clock b { font-weight: 400; color: #aab0c0; margin-left: 8px; }
-.menu-btn { margin-left: auto; display: inline-flex; align-items: center; gap: 16px; padding: 10px 0 10px 8px; font-size: 16px; transition: color 0.38s var(--ease); }
+.menu-btn { display: inline-flex; align-items: center; gap: 16px; padding: 10px 0 10px 8px; font-size: 16px; transition: color 0.38s var(--ease); }
 .menu-btn:hover { color: var(--accent); }
 .menu-btn .lbl { min-width: 62px; text-align: right; }
 .menu-btn .lines { position: relative; width: 26px; height: 10px; }
@@ -146,7 +147,7 @@ body.menu-open .mnav a { opacity: 1; filter: blur(0); transform: none; transitio
 /* ---------- кнопки ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 16px 30px; border-radius: 999px;
+  padding: 16px 30px; border-radius: 10px;
   font: 500 16px/1 var(--body);
   background: var(--accent); color: #031019;
   border: 1px solid transparent;
@@ -156,7 +157,7 @@ body.menu-open .mnav a { opacity: 1; filter: blur(0); transform: none; transitio
 .btn.ghost { background: transparent; color: var(--text); border-color: var(--line2); }
 .btn.ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
 .btn.sm { padding: 12px 22px; font-size: 15px; }
-.btn.light { background: #fff; color: #050507; border-radius: 8px; padding: 12px 22px; font-size: 15px; }
+.btn.light { background: #fff; color: #050507; border-radius: 10px; padding: 12px 22px; font-size: 15px; }
 .btn.light:hover { background: var(--accent); box-shadow: none; transform: none; }
 
 /* ---------- секции ---------- */
@@ -231,24 +232,23 @@ section, .page-hero { overflow-x: clip; }
 .work:hover h3 svg { opacity: 1; transform: none; color: var(--accent); }
 .work-info p { color: var(--muted); margin-top: 10px; max-width: 46ch; font-size: 16px; }
 
-/* ---------- услуги ---------- */
-.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+/* ---------- услуги: одна плашка в ряд ---------- */
+.svc-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
 .svc {
-  display: flex; flex-direction: column; position: relative;
-  padding: 34px 32px 30px; min-height: 300px;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr) auto; align-items: center; gap: 32px;
+  padding: 30px 34px;
   border: 1px solid var(--line); border-radius: var(--r);
-  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
-  transition: border-color 0.78s var(--ease), background 0.78s var(--ease);
+  background: linear-gradient(90deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
+  transition: border-color 1s var(--ease), background 1s var(--ease);
 }
-a.svc:hover { border-color: rgba(34, 160, 254, .5); background: linear-gradient(180deg, rgba(34,160,254,.09), rgba(255,255,255,.01)); }
-.svc h3 { font-size: clamp(20px, 1.9vw, 25px); margin-bottom: 14px; }
-.svc p { color: var(--muted); font-size: 16px; }
-.svc .meta { margin-top: auto; padding-top: 34px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
-.svc .meta b { font: 500 clamp(24px, 2.4vw, 32px)/1 var(--display); letter-spacing: -.03em; }
+a.svc:hover { border-color: rgba(34, 160, 254, .5); background: linear-gradient(90deg, rgba(34,160,254,.09), rgba(255,255,255,.01)); }
+.svc h3 { font-size: clamp(20px, 2vw, 26px); }
+.svc p { color: var(--muted); font-size: 16px; max-width: 52ch; }
+.svc .meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; min-width: 150px; text-align: right; }
+.svc .meta b { font: 500 clamp(24px, 2.4vw, 32px)/1 var(--display); letter-spacing: -.03em; white-space: nowrap; }
 .svc .meta span { color: var(--muted); font-size: 15px; }
-.quiz-card { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 28px; min-height: 0; padding: 30px 34px; }
-.quiz-card .q { width: 60px; height: 60px; flex: none; border: 1px solid var(--line2); border-radius: 14px; display: grid; place-items: center; font: 400 28px/1 var(--display); color: var(--accent); }
-.quiz-card > div:nth-child(2) { flex: 1; }
+.quiz-card { grid-template-columns: auto minmax(0, 1fr) auto; }
+.quiz-card .q { width: 60px; height: 60px; border: 1px solid var(--line2); border-radius: 14px; display: grid; place-items: center; font: 400 28px/1 var(--display); color: var(--accent); }
 .quiz-card h3 { margin-bottom: 6px; }
 
 /* ---------- продукты-полоса ---------- */
@@ -311,14 +311,15 @@ a.svc:hover { border-color: rgba(34, 160, 254, .5); background: linear-gradient(
 
 /* ---------- cta ---------- */
 .cta-card {
-  position: relative; overflow: hidden; text-align: center;
-  padding: clamp(56px, 9vw, 120px) 28px;
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 5vw, 70px); align-items: end;
+  padding: clamp(36px, 6vw, 84px);
   border: 1px solid var(--line); border-radius: 32px;
-  background: radial-gradient(circle at 50% 120%, rgba(34, 160, 254, .32), transparent 60%), var(--bg2);
+  background: radial-gradient(circle at 100% 110%, rgba(34, 160, 254, .34), transparent 55%), radial-gradient(circle at 0% 0%, rgba(91, 108, 255, .14), transparent 50%), var(--bg2);
 }
-.cta-card h2 { font-size: clamp(28px, 5vw, 64px); max-width: 17ch; margin: 0 auto; }
-.cta-card p { color: var(--muted); max-width: 48ch; margin: 24px auto 0; }
-.cta-card .btn { margin-top: 40px; }
+.cta-card::before { left: auto; right: -2%; top: auto; bottom: -.12em; transform: none; }
+.cta-card h2 { font-size: clamp(28px, 4.2vw, 56px); max-width: 14ch; text-wrap: balance; }
+.cta-side p { color: var(--muted); max-width: 36ch; margin: 0 0 28px; }
 
 /* ---------- контакты ---------- */
 .contact { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: start; }
@@ -363,7 +364,7 @@ a.svc:hover { border-color: rgba(34, 160, 254, .5); background: linear-gradient(
 .opt .d { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
 .fields { display: grid; gap: 18px; }
 .qnav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); }
-.qnav .btn { border-radius: 8px; padding: 14px 24px; font-size: 15px; }
+.qnav .btn { border-radius: 10px; padding: 14px 24px; font-size: 15px; }
 .qnav .btn:disabled { opacity: .35; pointer-events: none; }
 .qbody.swap { animation: qswap 0.45s var(--ease) backwards; }
 @keyframes qswap { from { opacity: 0; filter: blur(8px); transform: translateY(8px); } }
@@ -423,8 +424,12 @@ a.svc:hover { border-color: rgba(34, 160, 254, .5); background: linear-gradient(
 
 /* ---------- адаптив ---------- */
 @media (max-width: 980px) {
-  .svc-grid { grid-template-columns: repeat(2, 1fr); }
-  .faq-wrap, .quiz { grid-template-columns: 1fr; }
+  .svc { grid-template-columns: minmax(0, 1fr) auto; gap: 14px 24px; }
+  .svc h3 { grid-column: 1; }
+  .svc p { grid-column: 1; grid-row: 2; }
+  .svc .meta { grid-column: 2; grid-row: 1 / 3; }
+  .faq-wrap, .quiz { grid-template-columns: minmax(0, 1fr); }
+  .cta-card { grid-template-columns: minmax(0, 1fr); align-items: start; }
   .qside { position: relative; top: 0; }
   .ftr-mid { flex-direction: column; }
   .ftr-nav { justify-content: flex-start; }
@@ -436,8 +441,11 @@ a.svc:hover { border-color: rgba(34, 160, 254, .5); background: linear-gradient(
   .svc.wide { grid-template-columns: 1fr; gap: 0; }
 }
 @media (max-width: 680px) {
-  .svc-grid { grid-template-columns: 1fr; }
-  .quiz-card { flex-direction: column; align-items: flex-start; }
+  .svc { padding: 24px 22px; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .svc h3, .svc p, .svc .meta { grid-column: 1; grid-row: auto; }
+  .svc .meta { flex-direction: row; justify-content: space-between; align-items: baseline; text-align: left; min-width: 0; margin-top: 8px; }
+  .quiz-card { grid-template-columns: minmax(0, 1fr); }
+  .cta-card { grid-template-columns: minmax(0, 1fr); align-items: start; }
   .qtop { flex-direction: column; align-items: flex-start; }
   .qa .ans p { padding-right: 0; }
   body { font-size: 16px; }
