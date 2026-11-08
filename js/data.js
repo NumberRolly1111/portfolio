@@ -73,21 +73,6 @@ window.PROJECTS = [
     desc: "Сайт котокафе Kotiko в Астане на чистых HTML, CSS и JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
     links: []
-  },
-  {
-    id: "w-plugins",
-    points: ["W-Auth: регистрация и вход", "W-ModerCommands: ban, mute и warn с историей в SQLite", "W-Check: ручная проверка на читы с таймером до автобана"],
-    title: "W-плагины",
-    type: "Плагины для Minecraft",
-    cat: "minecraft",
-    glyph: "W-",
-    c1: "#12722b",
-    c2: "#0a1f3a",
-    featured: false,
-    short: "Набор плагинов для Paper: вход, модерация, проверка на читы.",
-    desc: "Свои плагины для Paper в едином стиле сообщений. W-Auth отвечает за регистрацию и вход, W-ModerCommands даёт ban, mute и warn с историей наказаний в SQLite, W-Check запускает ручную проверку игрока на читы с таймером до автобана.",
-    stack: ["Java", "Paper", "Maven", "SQLite"],
-    links: []
   }
 ];
 
