@@ -254,7 +254,7 @@
       '<div class="case-grid">' +
       '<aside class="case-side" data-reveal><ul class="case-facts">' + facts.map(function (f) { return "<li><span>" + f[0] + "</span><b>" + f[1] + "</b></li>"; }).join("") + "</ul>" +
       (more ? '<div class="sheet-links">' + more + "</div>" : "") +
-      (!p.links.length ? '<p class="muted">' + t("Публичной ссылки пока нет.") + "</p>" : "") + "</aside>" +
+      "</aside>" +
       '<div data-reveal style="--d:.12s"><h2>' + t("О проекте") + '</h2><p class="case-desc">' + t(p.desc) + "</p>" +
       "<h3>" + t("Что внутри") + '</h3><ul class="pts">' + p.points.map(function (x) { return "<li>" + t(x) + "</li>"; }).join("") + "</ul></div></div>" +
       '<div class="case-nav" data-reveal>' +

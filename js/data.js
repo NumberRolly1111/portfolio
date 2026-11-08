@@ -16,8 +16,7 @@ window.PROJECTS = [
     desc: "Telegram Mini App с рулеткой юзернеймов. В игре есть рейтинг игроков, реферальная система, мини-игра «Минное поле» и покупки за Telegram Stars. Прогресс сохраняется, серверная часть работает на Cloudflare Workers и D1.",
     stack: ["HTML", "CSS", "JavaScript", "Telegram Mini App", "Cloudflare Workers", "D1"],
     links: [
-      { label: "Бот в Telegram", url: "https://t.me/NumberRollyBot" },
-      { label: "Канал игры", url: "https://t.me/NameRolly" }
+      { label: "Бот в Telegram", url: "https://t.me/NumberRollyBot" }
     ]
   },
   {
@@ -56,7 +55,7 @@ window.PROJECTS = [
     short: "Сайт школы английского в Астане, заявки уходят в WhatsApp.",
     desc: "Сайт школы английского языка в Астане на чистых HTML, CSS и JavaScript. Данные взяты из карточки школы в 2ГИС, оформление повторяет стиль школы, заявки с сайта отправляются прямо в WhatsApp.",
     stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-    links: [{ label: "Код на GitHub", url: "https://github.com/NumberRolly1111/study-on" }]
+    links: []
   },
   {
     id: "kotiko",
@@ -73,7 +72,7 @@ window.PROJECTS = [
     short: "Сайт котокафе в Астане.",
     desc: "Сайт котокафе Kotiko в Астане на чистых HTML, CSS и JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
-    links: [{ label: "Открыть сайт", url: "https://kotiko.w-smp.in" }]
+    links: []
   },
   {
     id: "w-plugins",
