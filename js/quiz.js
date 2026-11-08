@@ -3,6 +3,9 @@
   var root = document.getElementById("quiz");
   if (!root) return;
 
+  var t = window.t || function (x) { return x; };
+  var WA = "https://wa.me/77751213271";
+  var lastText = "";
   var TG = "https://t.me/ddwwks";
   var IG = "https://www.instagram.com/bauyrzhanov_12_/";
   var TT = "https://www.tiktok.com/@bauyrzhanov_12_";
@@ -158,17 +161,17 @@
 
   function bodyHTML(st) {
     if (st.type === "choice") {
-      return '<div class="opts" role="radiogroup" aria-label="' + esc(st.title) + '">' + st.opts().map(function (o) {
+      return '<div class="opts" role="radiogroup" aria-label="' + esc(t(st.title)) + '">' + st.opts().map(function (o) {
         var on = A[st.key] === o[0];
-        return '<button type="button" class="opt" role="radio" aria-checked="' + on + '" data-v="' + esc(o[0]) + '"><i class="rd"></i><span><b>' + esc(o[0]) + '</b><span class="d">' + esc(o[1]) + "</span></span></button>";
+        return '<button type="button" class="opt" role="radio" aria-checked="' + on + '" data-v="' + esc(o[0]) + '"><i class="rd"></i><span><b>' + esc(t(o[0])) + '</b><span class="d">' + esc(t(o[1])) + "</span></span></button>";
       }).join("") + "</div>";
     }
     if (st.type === "text") {
-      return '<div class="field"><label for="q-about">О проекте</label><textarea id="q-about" data-f="about" placeholder="' + esc(PLACEHOLDER[A.dir] || "Расскажите, что нужно сделать и какого результата хотите") + '">' + esc(A.about || "") + "</textarea></div>";
+      return '<div class="field"><label for="q-about">' + t("О проекте") + '</label><textarea id="q-about" data-f="about" placeholder="' + esc(t(PLACEHOLDER[A.dir] || "Расскажите, что нужно сделать и какого результата хотите")) + '">' + esc(A.about || "") + "</textarea></div>";
     }
     return '<div class="fields">' +
-      '<div class="field"><label for="q-name">Как вас зовут</label><input id="q-name" data-f="name" type="text" autocomplete="name" value="' + esc(A.name || "") + '"></div>' +
-      '<div class="field"><label for="q-contact">Telegram, WhatsApp или телефон</label><input id="q-contact" data-f="contact" type="text" placeholder="@username или номер" value="' + esc(A.contact || "") + '"></div>' +
+      '<div class="field"><label for="q-name">' + t("Как вас зовут") + '</label><input id="q-name" data-f="name" type="text" autocomplete="name" value="' + esc(A.name || "") + '"></div>' +
+      '<div class="field"><label for="q-contact">' + t("Telegram, WhatsApp или телефон") + '</label><input id="q-contact" data-f="contact" type="text" placeholder="' + esc(t("@username или номер")) + '" value="' + esc(A.contact || "") + '"></div>' +
       "</div>";
   }
 
@@ -176,12 +179,13 @@
     var rows = STEPS.map(function (st, i) {
       var v = valueOf(st);
       var can = i <= furthest;
-      return '<button type="button" class="qrow' + (i === cur && !done ? " cur" : "") + '" data-go="' + i + '"' + (can ? "" : " disabled") + '><span class="l">' + st.label + '</span><span class="v">' + (v ? esc(v) : "—") + "</span></button>";
+      return '<button type="button" class="qrow' + (i === cur && !done ? " cur" : "") + '" data-go="' + i + '"' + (can ? "" : " disabled") + '><span class="l">' + t(st.label) + '</span><span class="v">' + (v ? esc(t(v)) : "—") + "</span></button>";
     }).join("");
-    return '<div class="qs-head"><span>Ваша заявка</span><span>' + answeredCount() + " / " + STEPS.length + "</span></div>" +
-      '<p class="qs-note">Обновляется по мере ответов. Любой пункт можно изменить: нажмите на него.</p>' + rows +
-      '<div class="qs-foot"><p>Удобнее написать сразу?</p><div class="soc2">' +
+    return '<div class="qs-head"><span>' + t("Ваша заявка") + '</span><span>' + answeredCount() + " / " + STEPS.length + "</span></div>" +
+      '<p class="qs-note">' + t("Обновляется по мере ответов. Любой пункт можно изменить: нажмите на него.") + '</p>' + rows +
+      '<div class="qs-foot"><p>' + t("Удобнее написать сразу?") + '</p><div class="soc2">' +
       '<a href="' + TG + '" target="_blank" rel="noopener" aria-label="Telegram">' + window.ICONS.tg + "</a>" +
+      '<a href="' + WA + '" target="_blank" rel="noopener" aria-label="WhatsApp">' + window.ICONS.wa + "</a>" +
       '<a href="' + IG + '" target="_blank" rel="noopener" aria-label="Instagram">' + window.ICONS.ig + "</a>" +
       '<a href="' + TT + '" target="_blank" rel="noopener" aria-label="TikTok">' + window.ICONS.tt + "</a></div></div>";
   }
@@ -190,9 +194,9 @@
     var card = root.querySelector(".qcard");
     var side = root.querySelector(".qside");
     if (done) {
-      card.innerHTML = '<div class="qdone"><h2 class="qtitle">Заявка собрана</h2>' +
-        '<p class="qhint">В Telegram открылся чат со мной с готовым сообщением. Нажмите «Отправить» в чате. Если текст не подставился, он уже скопирован: просто вставьте его.</p>' +
-        '<div class="qnav"><button type="button" class="btn ghost" data-act="again">Заполнить заново</button><a class="btn light" href="' + TG + '" target="_blank" rel="noopener">Открыть Telegram</a></div></div>';
+      card.innerHTML = '<div class="qdone"><h2 class="qtitle">' + t("Заявка собрана") + '</h2>' +
+        '<p class="qhint">' + t("В Telegram открылся чат со мной с готовым сообщением. Нажмите «Отправить» в чате. Если текст не подставился, он уже скопирован: просто вставьте его. Удобнее WhatsApp? Нажмите кнопку ниже.") + '</p>' +
+        '<div class="qnav qnav-wrap"><button type="button" class="btn ghost" data-act="again">' + t("Заполнить заново") + '</button><a class="btn ghost" href="' + WA + "?text=" + encodeURIComponent(lastText) + '" target="_blank" rel="noopener">' + t("Открыть WhatsApp") + '</a><a class="btn light" href="' + TG + "?text=" + encodeURIComponent(lastText) + '" target="_blank" rel="noopener">' + t("Открыть Telegram") + "</a></div></div>";
       side.innerHTML = sideHTML();
       return;
     }
@@ -201,11 +205,11 @@
     var last = cur === STEPS.length - 1;
     card.innerHTML =
       '<div class="qbody' + (swap ? " swap" : "") + '">' +
-      '<div class="qtop"><span>Шаг ' + pad(cur + 1) + " / " + pad(STEPS.length) + '</span><div class="bars" aria-hidden="true">' + bars + "</div></div>" +
-      '<h2 class="qtitle">' + st.title + '</h2><p class="qhint">' + st.hint + "</p>" +
+      '<div class="qtop"><span>' + t("Шаг") + ' ' + pad(cur + 1) + " / " + pad(STEPS.length) + '</span><div class="bars" aria-hidden="true">' + bars + "</div></div>" +
+      '<h2 class="qtitle">' + t(st.title) + '</h2><p class="qhint">' + t(st.hint) + "</p>" +
       bodyHTML(st) +
-      '<div class="qnav">' + (cur ? '<button type="button" class="btn ghost" data-act="back">Назад</button>' : "<span></span>") +
-      '<button type="button" class="btn light" data-act="next"' + (canNext() ? "" : " disabled") + ">" + (last ? "Отправить" : "Далее") + (last ? "" : " →") + "</button></div></div>";
+      '<div class="qnav">' + (cur ? '<button type="button" class="btn ghost" data-act="back">' + t("Назад") + '</button>' : "<span></span>") +
+      '<button type="button" class="btn light" data-act="next"' + (canNext() ? "" : " disabled") + ">" + (last ? t("Отправить") : t("Далее")) + (last ? "" : " →") + "</button></div></div>";
     side.innerHTML = sideHTML();
   }
 
@@ -235,6 +239,7 @@
     if (A.about && A.about.trim()) lines.push("", "О проекте: " + A.about.trim());
     lines.push("", "Как со мной связаться: " + A.contact.trim());
     var text = lines.join("\n");
+    lastText = text;
     if (navigator.clipboard) navigator.clipboard.writeText(text).catch(function () {});
     window.open(TG + "?text=" + encodeURIComponent(text), "_blank", "noopener");
     done = true;

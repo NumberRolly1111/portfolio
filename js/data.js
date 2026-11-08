@@ -2,6 +2,8 @@
 window.PROJECTS = [
   {
     id: "name-roulette",
+    img: "img/name-roulette.jpg",
+    points: ["Рейтинг игроков", "Реферальная система", "Мини-игра «Минное поле»", "Покупки за Telegram Stars", "Сохранение прогресса на Cloudflare Workers и D1"],
     title: "Нейм-рулетка",
     type: "Telegram Mini App · игра",
     cat: "telegram",
@@ -20,6 +22,8 @@ window.PROJECTS = [
   },
   {
     id: "wardensmp",
+    img: "img/wardensmp.jpg",
+    points: ["Каталог привилегий с корзиной и пересчётом валют", "Страница мониторинга онлайна", "Правила и программа для медиа", "Паспорт игрока с рейтингом по времени игры и балансу"],
     title: "WardenSMP",
     type: "Сайт и магазин сервера",
     cat: "web",
@@ -38,6 +42,8 @@ window.PROJECTS = [
   },
   {
     id: "study-on",
+    img: "img/study-on.jpg",
+    points: ["Данные из карточки школы в 2ГИС", "Оформление в стиле школы", "Заявки с сайта уходят прямо в WhatsApp"],
     title: "Study On",
     type: "Сайт языковой школы",
     cat: "web",
@@ -52,6 +58,8 @@ window.PROJECTS = [
   },
   {
     id: "kotiko",
+    img: "img/kotiko.jpg",
+    points: ["Сайт на чистых HTML, CSS и JavaScript", "Работает на собственном домене"],
     title: "Kotiko",
     type: "Сайт котокафе",
     cat: "web",
@@ -66,6 +74,7 @@ window.PROJECTS = [
   },
   {
     id: "w-plugins",
+    points: ["W-Auth: регистрация и вход", "W-ModerCommands: ban, mute и warn с историей в SQLite", "W-Check: ручная проверка на читы с таймером до автобана"],
     title: "W-плагины",
     type: "Плагины для Minecraft",
     cat: "minecraft",
@@ -98,6 +107,7 @@ window.STACK = ["HTML", "CSS", "JavaScript", "Telegram Mini App", "Telegram-бо
   window.ICONS = {
     tg: s('<path d="M21 4 3 11l6 2.2L11 20l3-4.2 5 3.7L21 4Z"/><path d="m9 13.2 12-9.2"/>'),
     ig: s('<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/>'),
+    wa: s('<path d="M3.5 20.5l1.4-4.6A8.5 8.5 0 1 1 8.2 19.2l-4.7 1.3Z"/><path d="M9.2 8.8c.2 2.2 2.8 4.8 5 5l1.2-1.2-1.7-1-.8.7c-.8-.3-1.4-.9-1.7-1.7l.7-.8-1-1.7-1.7 1.7Z"/>'),
     tt: s('<path d="M14 4v10.2a3.6 3.6 0 1 1-3.6-3.6"/><path d="M14 4c.3 2.4 2 4 4.6 4.2"/>')
   };
 })();
