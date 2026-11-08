@@ -86,7 +86,8 @@ window.SERVICES = [
   { id: "card", title: "Сайт-визитка", text: "Компактное онлайн-представительство для специалиста или малого бизнеса.", price: 60, days: 3 },
   { id: "corp", title: "Корпоративный сайт", text: "Представительный сайт компании: услуги, команда, проекты и контакты в одной системе.", price: 160, days: 7 },
   { id: "miniapp", title: "Telegram Mini App", text: "Игра или приложение, которое открывается прямо в Telegram, с рейтингом и оплатой через Stars.", price: 130, days: 5 },
-  { id: "plugin", title: "Плагин для Minecraft", text: "Плагин под ваш сервер на Paper: вход, модерация, проверки и другие механики.", price: 12, days: null }
+  { id: "plugin", title: "Плагин для Minecraft", text: "Плагин под ваш сервер на Paper: вход, модерация, проверки и другие механики.", price: 12, days: null },
+  { id: "rework", title: "Доработка проекта", text: "Исправлю ошибки, обновлю дизайн или добавлю новые функции в готовый сайт, приложение или бота.", price: 30, days: 3 }
 ];
 
 window.STACK = ["HTML", "CSS", "JavaScript", "Telegram Mini App", "Telegram-боты", "Cloudflare Workers", "D1", "GitHub Pages", "Java", "Paper", "Maven", "SQLite"];
