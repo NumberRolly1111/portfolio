@@ -21,7 +21,7 @@
   var page = document.body.getAttribute("data-page") || "";
 
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
-  var LOGO = 'G<i>web</i>studio';
+  var LOGO = 'G<i>web</i>Studio';
 
   var NAV = [
     ["home", "/", "Главная"],
@@ -42,7 +42,7 @@
       hdr.innerHTML =
         '<div class="aurora" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>' +
         '<header class="hdr">' +
-        '<a class="logo" href="/" aria-label="Gwebstudio, на главную">' + LOGO + "</a>" +
+        '<a class="logo" href="/" aria-label="GwebStudio, на главную">' + LOGO + "</a>" +
         '<button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false"><span class="lbl">Меню</span><span class="lines"><i></i><i></i></span></button>' +
         "</header>" +
         '<nav class="mnav" aria-label="Основное меню" aria-hidden="true">' + mlinks +
@@ -54,10 +54,10 @@
       var flinks = NAV.map(function (n) { return '<a href="' + n[1] + '">' + n[2] + "</a>"; }).join("") + '<a href="/quiz">Обсудить проект</a>';
       ftr.innerHTML =
         '<footer class="ftr"><div class="wrap">' +
-        '<a class="big-logo" href="/" aria-label="Gwebstudio, на главную">' + LOGO + "<b></b></a>" +
-        '<div class="ftr-mid"><p>Дизайнер и разработчик из Астаны. Делаю сайты, игры для Telegram Mini App и плагины для Minecraft: от идеи до запуска.</p>' +
+        '<a class="big-logo" href="/" aria-label="GwebStudio, на главную">' + LOGO + "<b></b></a>" +
+        '<div class="ftr-mid"><p>Делаю современные сайты для бизнеса в Казахстане и России: от первой идеи до результата, который приводит клиентов и заявки.</p>' +
         '<nav class="ftr-nav" aria-label="Разделы">' + flinks + "</nav></div>" +
-        '<div class="ftr-bot"><span>© <span id="y"></span> Gwebstudio. Создано <a href="' + IG + '" target="_blank" rel="noopener">@bauyrzhanov_12_</a></span>' +
+        '<div class="ftr-bot"><span>© <span id="y"></span> GwebStudio. Создано <a href="' + IG + '" target="_blank" rel="noopener">@bauyrzhanov_12_</a></span>' +
         '<div class="icons">' + soc("tg") + soc("ig") + soc("tt") + "</div></div>" +
         "</div></footer>";
       var y = document.getElementById("y");
@@ -261,6 +261,14 @@
   initFaq();
   splitWords();
   // небольшая пауза, чтобы первая анимация успела проиграться после загрузки шрифтов
-  window.addEventListener("load", function () { setTimeout(initReveal, 120); });
-  if (document.readyState === "complete") setTimeout(initReveal, 120);
+  var intro = document.querySelector(".intro");
+  var wait = intro ? 1250 : 120;
+  if (intro) {
+    intro.addEventListener("animationend", function (e) { if (e.animationName === "introOut") intro.remove(); });
+    setTimeout(function () { if (intro.parentNode) intro.remove(); }, 4000);
+  }
+  var started = false;
+  function startReveal() { if (started) return; started = true; setTimeout(initReveal, wait); }
+  window.addEventListener("load", startReveal);
+  if (document.readyState === "complete") startReveal();
 })();
