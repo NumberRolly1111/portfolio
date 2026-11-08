@@ -68,7 +68,7 @@ window.PROJECTS = [
     glyph: "K",
     c1: "#c4562b",
     c2: "#3b1230",
-    featured: true,
+    featured: false,
     short: "Сайт котокафе в Астане.",
     desc: "Сайт котокафе Kotiko в Астане на чистых HTML, CSS и JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
