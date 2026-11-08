@@ -80,4 +80,23 @@ window.PROJECTS = [
   }
 ];
 
+window.SERVICES = [
+  { id: "landing", title: "Одностраничный лендинг", text: "Для запуска услуги, акции или продукта. Ведёт посетителя к заявке.", price: 80, days: 5 },
+  { id: "multi", title: "Многостраничный сайт", text: "Полноценный сайт компании с несколькими разделами. Вызывает доверие у клиентов.", price: 160, days: 7 },
+  { id: "card", title: "Сайт-визитка", text: "Компактное онлайн-представительство для специалиста или малого бизнеса.", price: 60, days: 3 },
+  { id: "corp", title: "Корпоративный сайт", text: "Представительный сайт компании: услуги, команда, проекты и контакты в одной системе.", price: 160, days: 7 },
+  { id: "miniapp", title: "Telegram Mini App", text: "Игра или приложение, которое открывается прямо в Telegram, с рейтингом и оплатой через Stars.", price: 130, days: 5 },
+  { id: "plugin", title: "Плагин для Minecraft", text: "Плагин под ваш сервер на Paper: вход, модерация, проверки и другие механики.", price: 12, days: null }
+];
+
 window.STACK = ["HTML", "CSS", "JavaScript", "Telegram Mini App", "Telegram-боты", "Cloudflare Workers", "D1", "GitHub Pages", "Java", "Paper", "Maven", "SQLite"];
+
+// иконки соцсетей
+(function () {
+  var s = function (inner, fill) { return '<svg viewBox="0 0 24 24" width="20" height="20" ' + (fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"') + ">" + inner + "</svg>"; };
+  window.ICONS = {
+    tg: s('<path d="M21 4 3 11l6 2.2L11 20l3-4.2 5 3.7L21 4Z"/><path d="m9 13.2 12-9.2"/>'),
+    ig: s('<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/>'),
+    tt: s('<path d="M14 4v10.2a3.6 3.6 0 1 1-3.6-3.6"/><path d="M14 4c.3 2.4 2 4 4.6 4.2"/>')
+  };
+})();

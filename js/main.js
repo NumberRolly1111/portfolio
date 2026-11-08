@@ -1,56 +1,64 @@
 (function () {
   "use strict";
 
-  var TG = "https://t.me/bauyrzhanov_12_";
-  var GH = "https://github.com/NumberRolly1111";
+  // адрес без .html: /services.html -> /services, /index.html -> /
+  (function cleanUrl() {
+    var p = location.pathname;
+    if (/\.html$/.test(p) && window.history && history.replaceState) {
+      var c = p.replace(/index\.html$/, "").replace(/\.html$/, "");
+      history.replaceState(null, "", (c || "/") + location.search + location.hash);
+    }
+  })();
+
+  var TG = "https://t.me/ddwwks";
+  var IG = "https://www.instagram.com/bauyrzhanov_12_/";
+  var TT = "https://www.tiktok.com/@bauyrzhanov_12_";
+  var LABEL = { tg: "Telegram", ig: "Instagram", tt: "TikTok" };
+  var LINK = { tg: TG, ig: IG, tt: TT };
+  function soc(key, i) {
+    return '<a href="' + LINK[key] + '"' + (i == null ? "" : ' style="--i:' + i + '"') + ' target="_blank" rel="noopener" aria-label="' + LABEL[key] + '">' + window.ICONS[key] + "</a>";
+  }
   var page = document.body.getAttribute("data-page") || "";
 
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+  var LOGO = 'G<i>web</i>studio';
 
   var NAV = [
-    ["home", "index.html", "Главная"],
-    ["services", "services.html", "Услуги"],
-    ["portfolio", "portfolio.html", "Портфолио"],
-    ["about", "about.html", "Обо мне"],
-    ["contacts", "contacts.html", "Контакты"]
+    ["home", "/", "Главная"],
+    ["services", "/services", "Услуги"],
+    ["portfolio", "/portfolio", "Портфолио"],
+    ["about", "/about", "Обо мне"],
+    ["contacts", "/contacts", "Контакты"]
   ];
 
   /* ---------- шапка и подвал ---------- */
   function buildLayout() {
     var hdr = document.getElementById("site-header");
     if (hdr) {
-      var items = NAV.filter(function (n) { return n[0] !== "contacts"; }).concat([["contacts", "contacts.html", "Обсудить проект"]]);
+      var items = NAV.filter(function (n) { return n[0] !== "contacts"; }).concat([["quiz", "/quiz", "Обсудить проект"]]);
       var mlinks = items.map(function (n, i) {
         return '<a href="' + n[1] + '" style="--i:' + i + '"' + (n[0] === page ? ' aria-current="page"' : "") + ">" + n[2] + "</a>";
       }).join("");
-      var ICON_TG = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.2L11 20l3-4.2 5 3.7L21 4Z"/><path d="m9 13.2 12-9.2"/></svg>';
-      var ICON_GH = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.03 1.52 1.03.9 1.52 2.34 1.08 2.9.83.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.1-4.55-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>';
       hdr.innerHTML =
         '<div class="aurora" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>' +
         '<header class="hdr">' +
-        '<a class="logo" href="index.html" aria-label="W-Dev, на главную">W<i>-</i>Dev</a>' +
-        '<div class="clock" aria-hidden="true"><span>АСТ<b data-tz="5">--:--</b></span><span>МСК<b data-tz="3">--:--</b></span></div>' +
+        '<a class="logo" href="/" aria-label="Gwebstudio, на главную">' + LOGO + "</a>" +
         '<button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false"><span class="lbl">Меню</span><span class="lines"><i></i><i></i></span></button>' +
         "</header>" +
         '<nav class="mnav" aria-label="Основное меню" aria-hidden="true">' + mlinks +
-        '<div class="soc">' +
-        '<a href="' + TG + '" style="--i:' + (items.length) + '" target="_blank" rel="noopener" aria-label="Telegram">' + ICON_TG + "</a>" +
-        '<a href="' + GH + '" style="--i:' + (items.length + 1) + '" target="_blank" rel="noopener" aria-label="GitHub">' + ICON_GH + "</a>" +
-        "</div></nav>";
+        '<div class="soc">' + soc("tg", items.length) + soc("ig", items.length + 1) + soc("tt", items.length + 2) + "</div></nav>";
     }
 
     var ftr = document.getElementById("site-footer");
     if (ftr) {
+      var flinks = NAV.map(function (n) { return '<a href="' + n[1] + '">' + n[2] + "</a>"; }).join("") + '<a href="/quiz">Обсудить проект</a>';
       ftr.innerHTML =
         '<footer class="ftr"><div class="wrap">' +
-        '<div class="ftr-top">' +
-        '<div><a class="logo" href="index.html">W<i>-</i>Dev</a><p>Дизайнер и разработчик из Астаны. Делаю сайты и игры для Telegram Mini App.</p></div>' +
-        '<div><h4>Разделы</h4><ul>' + NAV.map(function (n) { return '<li><a href="' + n[1] + '">' + n[2] + "</a></li>"; }).join("") + "</ul></div>" +
-        '<div><h4>Связь</h4><ul><li><a href="' + TG + '" target="_blank" rel="noopener">Telegram</a></li>' +
-        '<li><a href="' + GH + '" target="_blank" rel="noopener">GitHub</a></li></ul></div>' +
-        "</div>" +
-        '<div class="ftr-bot"><span>© <span id="y"></span> W-Dev</span>' +
-        '<span>Создано <a href="' + TG + '" target="_blank" rel="noopener">@bauyrzhanov_12_</a></span></div>' +
+        '<a class="big-logo" href="/" aria-label="Gwebstudio, на главную">' + LOGO + "<b></b></a>" +
+        '<div class="ftr-mid"><p>Дизайнер и разработчик из Астаны. Делаю сайты, игры для Telegram Mini App и плагины для Minecraft: от идеи до запуска.</p>' +
+        '<nav class="ftr-nav" aria-label="Разделы">' + flinks + "</nav></div>" +
+        '<div class="ftr-bot"><span>© <span id="y"></span> Gwebstudio. Создано <a href="' + IG + '" target="_blank" rel="noopener">@bauyrzhanov_12_</a></span>' +
+        '<div class="icons">' + soc("tg") + soc("ig") + soc("tt") + "</div></div>" +
         "</div></footer>";
       var y = document.getElementById("y");
       if (y) y.textContent = new Date().getFullYear();
@@ -81,17 +89,6 @@
     function onScroll() { if (h) h.classList.toggle("scrolled", window.scrollY > 24); }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-
-    // время астаны (UTC+5) и москвы (UTC+3)
-    function tick() {
-      var now = Date.now();
-      document.querySelectorAll(".clock b").forEach(function (el) {
-        var d = new Date(now + Number(el.getAttribute("data-tz")) * 3600000);
-        el.textContent = String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0");
-      });
-    }
-    tick();
-    setInterval(tick, 15000);
   }
 
   /* ---------- плавный переход между страницами ---------- */
@@ -106,7 +103,7 @@
       if (url.pathname === location.pathname && url.search === location.search) return;
       e.preventDefault();
       document.body.classList.add("leaving");
-      setTimeout(function () { location.href = a.href; }, 560);
+      setTimeout(function () { location.href = a.href; }, 360);
     });
     window.addEventListener("pageshow", function (e) {
       if (e.persisted) {
@@ -129,7 +126,7 @@
   }
 
   function initReveal() {
-    var els = document.querySelectorAll("[data-reveal], .split");
+    var els = document.querySelectorAll("[data-reveal], .split, [data-bg]");
     if (!("IntersectionObserver" in window)) {
       els.forEach(function (el) { el.classList.add("in"); });
       return;
@@ -140,6 +137,21 @@
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- услуги ---------- */
+  function renderServices() {
+    var host = document.getElementById("svc-grid");
+    if (!host || !window.SERVICES) return;
+    var cards = window.SERVICES.map(function (s, i) {
+      return '<a class="svc" href="/quiz" data-reveal style="--d:' + ((i % 3) * 0.12) + 's">' +
+        "<h3>" + s.title + "</h3><p>" + s.text + "</p>" +
+        '<div class="meta"><b>от $' + s.price + "</b><span>" + (s.days ? "от " + s.days + " " + (s.days === 3 ? "дней" : "дней") : "срок обсуждается") + "</span></div></a>";
+    }).join("");
+    var quiz = '<div class="svc quiz-card" data-reveal>' +
+      '<div class="q">?</div><div><h3>Не знаете, что выбрать?</h3><p>Ответьте на несколько вопросов, и по ответам я подскажу подходящий формат.</p></div>' +
+      '<a class="btn light" href="/quiz">Пройти квиз</a></div>';
+    host.innerHTML = cards + quiz;
   }
 
   /* ---------- проекты ---------- */
@@ -154,7 +166,7 @@
     if (!host || !window.PROJECTS) return;
     var list = window.PROJECTS.filter(function (p) { return host.hasAttribute("data-featured") ? p.featured : true; });
     host.innerHTML = list.map(function (p, i) {
-      return '<button class="work" type="button" data-id="' + p.id + '" data-cat="' + p.cat + '" data-reveal style="--d:' + ((i % 2) * 0.18) + 's">' +
+      return '<button class="work" type="button" data-id="' + p.id + '" data-cat="' + p.cat + '" data-reveal style="--d:' + ((i % 2) * 0.12) + 's">' +
         coverHTML(p) +
         '<div class="work-info"><div class="t">' + p.type + "</div><h3>" + p.title + ARROW + "</h3><p>" + p.short + "</p></div></button>";
     }).join("");
@@ -231,7 +243,7 @@
   function initFaq() {
     document.querySelectorAll(".qa").forEach(function (qa) {
       var b = qa.querySelector("button");
-      b.setAttribute("aria-expanded", "false");
+      b.setAttribute("aria-expanded", qa.classList.contains("open") ? "true" : "false");
       b.addEventListener("click", function () {
         var open = qa.classList.toggle("open");
         b.setAttribute("aria-expanded", open ? "true" : "false");
@@ -239,33 +251,14 @@
     });
   }
 
-  /* ---------- форма: собирает сообщение и открывает telegram ---------- */
-  function initForm() {
-    var f = document.getElementById("brief");
-    if (!f) return;
-    f.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var d = new FormData(f);
-      var text = "Здравствуйте! Меня зовут " + (d.get("name") || "") + ".\nЧто нужно: " + (d.get("kind") || "") + ".\n\n" + (d.get("about") || "");
-      var contact = (d.get("contact") || "").toString().trim();
-      if (contact) text += "\n\nКак со мной связаться: " + contact;
-      var btn = f.querySelector("button[type=submit]");
-      var note = f.querySelector(".note");
-      if (navigator.clipboard) navigator.clipboard.writeText(text).catch(function () {});
-      window.open(TG + "?text=" + encodeURIComponent(text), "_blank", "noopener");
-      if (note) note.textContent = "Telegram открыт с готовым сообщением. Если текст не подставился, он уже скопирован — просто вставьте его в чат.";
-      if (btn) btn.blur();
-    });
-  }
-
   /* ---------- запуск ---------- */
   buildLayout();
   initMenu();
   initTransitions();
+  renderServices();
   renderWorks();
   renderTicker();
   initFaq();
-  initForm();
   splitWords();
   // небольшая пауза, чтобы первая анимация успела проиграться после загрузки шрифтов
   window.addEventListener("load", function () { setTimeout(initReveal, 120); });
