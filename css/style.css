@@ -171,8 +171,8 @@ section { padding: clamp(72px, 11vw, 150px) 0; position: relative; }
 .chip:hover { color: var(--text); border-color: var(--line2); }
 .chip[aria-pressed="true"] { color: var(--text); background: rgba(34, 160, 254, .14); border-color: rgba(34, 160, 254, .5); }
 
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
-.work { text-align: left; display: block; width: 100%; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; align-items: start; }
+.work { text-align: left; display: flex; flex-direction: column; justify-content: flex-start; width: 100%; }
 .work.hide { display: none; }
 .cover {
   position: relative; aspect-ratio: 16 / 10; border-radius: var(--r); overflow: hidden;
