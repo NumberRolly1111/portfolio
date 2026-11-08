@@ -180,9 +180,10 @@
   }
 
   /* ---------- проекты ---------- */
-  var coverHTML = function (p) {
+  var coverHTML = function (p, big) {
+    var src = big && p.hero ? p.hero : p.img;
     return '<div class="cover" style="--c1:' + p.c1 + ";--c2:" + p.c2 + '">' +
-      (p.img ? '<img src="/' + p.img + '" alt="' + t(p.title) + '" loading="lazy">' : '<span class="glyph" aria-hidden="true">' + p.glyph + "</span>") +
+      (src ? '<img src="/' + src + '" alt="' + t(p.title) + '" loading="lazy">' : '<span class="glyph" aria-hidden="true">' + p.glyph + "</span>") +
       "</div>";
   };
 
@@ -249,7 +250,7 @@
     }).join("");
 
     host.innerHTML =
-      '<div class="case-cover" data-reveal>' + coverHTML(p) + "</div>" +
+      '<div class="case-cover" data-reveal>' + coverHTML(p, true) + "</div>" +
       '<div class="case-grid">' +
       '<aside class="case-side" data-reveal><ul class="case-facts">' + facts.map(function (f) { return "<li><span>" + f[0] + "</span><b>" + f[1] + "</b></li>"; }).join("") + "</ul>" +
       (more ? '<div class="sheet-links">' + more + "</div>" : "") +

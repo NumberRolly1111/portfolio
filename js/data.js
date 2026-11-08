@@ -3,6 +3,7 @@ window.PROJECTS = [
   {
     id: "name-roulette",
     img: "img/name-roulette.jpg",
+    hero: "img/name-roulette-case.jpg",
     points: ["Рейтинг игроков", "Реферальная система", "Мини-игра «Минное поле»", "Покупки за Telegram Stars", "Сохранение прогресса на Cloudflare Workers и D1"],
     title: "Нейм-рулетка",
     type: "Telegram Mini App · игра",
@@ -15,7 +16,6 @@ window.PROJECTS = [
     desc: "Telegram Mini App с рулеткой юзернеймов. В игре есть рейтинг игроков, реферальная система, мини-игра «Минное поле» и покупки за Telegram Stars. Прогресс сохраняется, серверная часть работает на Cloudflare Workers и D1.",
     stack: ["HTML", "CSS", "JavaScript", "Telegram Mini App", "Cloudflare Workers", "D1"],
     links: [
-      { label: "Открыть игру", url: "https://site.wsmp.workers.dev/" },
       { label: "Бот в Telegram", url: "https://t.me/NumberRollyBot" },
       { label: "Канал игры", url: "https://t.me/NameRolly" }
     ]
@@ -23,6 +23,7 @@ window.PROJECTS = [
   {
     id: "wardensmp",
     img: "img/wardensmp.jpg",
+    hero: "img/wardensmp-case.jpg",
     points: ["Каталог привилегий с корзиной и пересчётом валют", "Страница мониторинга онлайна", "Правила и программа для медиа", "Паспорт игрока с рейтингом по времени игры и балансу"],
     title: "WardenSMP",
     type: "Сайт и магазин сервера",
@@ -43,6 +44,7 @@ window.PROJECTS = [
   {
     id: "study-on",
     img: "img/study-on.jpg",
+    hero: "img/study-on-case.jpg",
     points: ["Данные из карточки школы в 2ГИС", "Оформление в стиле школы", "Заявки с сайта уходят прямо в WhatsApp"],
     title: "Study On",
     type: "Сайт языковой школы",
@@ -59,6 +61,7 @@ window.PROJECTS = [
   {
     id: "kotiko",
     img: "img/kotiko.jpg",
+    hero: "img/kotiko-case.jpg",
     points: ["Сайт на чистых HTML, CSS и JavaScript", "Работает на собственном домене"],
     title: "Kotiko",
     type: "Сайт котокафе",
