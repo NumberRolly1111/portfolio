@@ -51,6 +51,7 @@
         '<a class="logo" href="/" aria-label="GwebStudio, ' + t("на главную") + '">' + LOGO + "</a>" +
         '<div class="clock" aria-hidden="true"><span>АСТ<b data-tz="5">--:--</b></span><span>МСК<b data-tz="3">--:--</b></span></div>' +
         '<div class="lang" role="group" aria-label="' + t("Язык") + '">' + langs + "</div>" +
+        '<a class="btn light hdr-cta" href="/quiz">' + t("Обсудить проект") + "</a>" +
         '<button class="menu-btn" type="button" aria-label="' + t("Открыть меню") + '" aria-expanded="false"><span class="lbl">' + t("Меню") + '</span><span class="lines"><i></i><i></i></span></button>' +
         "</header>" +
         '<nav class="mnav" aria-label="' + t("Основное меню") + '" aria-hidden="true">' + mlinks +
