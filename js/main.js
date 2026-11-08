@@ -142,14 +142,23 @@
   /* ---------- появление при прокрутке ---------- */
   function splitWords() {
     document.querySelectorAll("[data-split]").forEach(function (el) {
-      var words = el.textContent.trim().split(/\s+/);
-      el.setAttribute("aria-label", el.textContent.trim());
+      var text = el.textContent.trim();
+      var words = text.split(/\s+/);
+      var acc = (el.getAttribute("data-accent") || "").toLowerCase();
+      var from = acc ? text.toLowerCase().indexOf(acc) : -1;
+      var to = from > -1 ? from + acc.length : -1;
+      var pos = 0;
+      el.setAttribute("aria-label", text);
       el.innerHTML = words.map(function (w, i) {
-        return '<span class="w" aria-hidden="true" style="--i:' + i + '">' + w + "</span>";
+        var start = text.indexOf(w, pos);
+        pos = start + w.length;
+        var on = from > -1 && start >= from && start < to;
+        return '<span class="w' + (on ? " acc" : "") + '" aria-hidden="true" style="--i:' + i + '">' + w + "</span>";
       }).join(" ");
       el.classList.add("split");
     });
   }
+
 
   function initReveal() {
     var els = document.querySelectorAll("[data-reveal], .split, [data-bg]");

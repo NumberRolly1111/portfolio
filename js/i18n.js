@@ -76,6 +76,9 @@
     ],
 
     /* ---------- главная ---------- */
+    "Диджитал-студия": ["Диджитал-студия", "Digital studio"],
+    "Разработка сайтов, которые приводят клиентов": ["Клиент әкелетін сайттарды әзірлеу", "Websites that bring in clients"],
+    "приводят клиентов": ["клиент әкелетін", "bring in clients"],
     "Дизайн и разработка · Астана": ["Дизайн және әзірлеу · Астана", "Design and development · Astana"],
     "Сайты и Telegram-игры, в которые хочется возвращаться": ["Қайта оралғың келетін сайттар мен Telegram ойындары", "Websites and Telegram games you want to come back to"],
     "Делаю сайты для бизнеса в Казахстане и России. Они не только хорошо выглядят, но и работают на результат: показывают, чем вы полезны, вызывают доверие и превращают посетителей в заявки.": [
@@ -551,8 +554,8 @@
     if (!v || !v[idx]) return;
     n.nodeValue = raw.match(/^\s*/)[0] + v[idx] + raw.match(/\s*$/)[0];
   });
-  document.querySelectorAll("[data-bg],[placeholder],[aria-label]").forEach(function (el) {
-    ["data-bg", "placeholder", "aria-label"].forEach(function (a) {
+  document.querySelectorAll("[data-bg],[data-accent],[placeholder],[aria-label]").forEach(function (el) {
+    ["data-bg", "data-accent", "placeholder", "aria-label"].forEach(function (a) {
       if (el.hasAttribute(a)) el.setAttribute(a, t(el.getAttribute(a)));
     });
   });
