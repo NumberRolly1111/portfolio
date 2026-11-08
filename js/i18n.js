@@ -5,6 +5,18 @@
 
   var T = {
     /* ---------- навигация и общие элементы ---------- */
+    "Змейка": ["Жылан", "Snake"],
+    "Змейка — GwebStudio": ["Жылан — GwebStudio", "Snake — GwebStudio"],
+    "Мини-игра на сайте GwebStudio: змейка, в которой нужно собирать значки технологий.": ["GwebStudio сайтындағы шағын ойын: технология белгілерін жинау керек жылан.", "A mini-game on the GwebStudio site: a snake that collects technology badges."],
+    "Собирай значки технологий, на которых я делаю сайты. Чем больше собрано, тем быстрее змейка.": ["Мен сайттарды жасайтын технологиялардың белгілерін жина. Көп жинаған сайын жылан жылдамырақ.", "Collect the badges of the technologies I build sites with. The more you collect, the faster the snake."],
+    "Счёт": ["Ұпай", "Score"],
+    "Рекорд": ["Рекорд", "Best"],
+    "Играть": ["Ойнау", "Play"],
+    "Ещё раз": ["Қайта", "Play again"],
+    "Пауза": ["Үзіліс", "Paused"],
+    "Продолжить": ["Жалғастыру", "Resume"],
+    "Игра окончена": ["Ойын аяқталды", "Game over"],
+    "Управление: стрелки или WASD, пробел для паузы. На телефоне свайп по полю.": ["Басқару: көрсеткілер немесе WASD, үзіліс үшін бос орын. Телефонда алаң бойымен сырғыту.", "Controls: arrow keys or WASD, space to pause. On a phone, swipe on the field."],
     "Главная": ["Басты бет", "Home"],
     "Услуги": ["Қызметтер", "Services"],
     "Портфолио": ["Портфолио", "Portfolio"],
@@ -327,9 +339,9 @@
       "In the quiz you enter your name, contact and a project description. These answers stay in your browser. When you press “Send”, the site assembles the message text and opens Telegram with it. The message reaches me only if you send it yourself in Telegram or WhatsApp."
     ],
     "Что сохраняется в браузере": ["Браузерде не сақталады", "What is saved in your browser"],
-    "Для работы сайта используется память браузера: выбранный язык интерфейса и отметка о том, что вы уже видели заставку при первом заходе. Это не персональные данные, их можно удалить в настройках браузера.": [
-      "Сайт жұмысы үшін браузер жады қолданылады: таңдалған интерфейс тілі және алғашқы кіргенде қосылу экранын көргеніңіз туралы белгі. Бұл жеке деректер емес, оларды браузер баптауларында жоюға болады.",
-      "The site uses browser storage for the interface language you chose and a mark that you have already seen the intro screen on your first visit. This is not personal data and you can delete it in your browser settings."
+    "Для работы сайта используется память браузера: выбранный язык интерфейса, отметка о том, что вы уже видели заставку при первом заходе, и ваш рекорд в мини-игре. Это не персональные данные, их можно удалить в настройках браузера.": [
+      "Сайт жұмысы үшін браузер жады қолданылады: таңдалған интерфейс тілі, алғашқы кіргенде қосылу экранын көргеніңіз туралы белгі және шағын ойындағы рекордыңыз. Бұл жеке деректер емес, оларды браузер баптауларында жоюға болады.",
+      "The site uses browser storage for the interface language you chose, a mark that you have already seen the intro screen on your first visit, and your best score in the mini-game. This is not personal data and you can delete it in your browser settings."
     ],
     "Сторонние сервисы": ["Үшінші тарап сервистері", "Third-party services"],
     "Шрифты загружаются с Google Fonts, поэтому браузер обращается к серверам Google. Сайт размещён на GitHub Pages, и хостинг может записывать технические данные запросов, например IP-адрес. Ссылки на Telegram, WhatsApp, Instagram, TikTok и GitHub ведут на сторонние сайты со своими правилами.": [
