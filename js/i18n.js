@@ -227,6 +227,13 @@
     "Заявки с сайта уходят прямо в WhatsApp": ["Сайттан өтінімдер тікелей WhatsApp-қа түседі", "Requests from the site go straight to WhatsApp"],
 
     "Kotiko": ["Kotiko", "Kotiko"],
+    "Dinastiya Stom Clinic": ["Dinastiya Stom Clinic", "Dinastiya Stom Clinic"],
+    "Сайт стоматологии": ["Стоматология сайты", "Dental clinic website"],
+    "Сайт стоматологии в Астане: услуги, цены, рассрочка и запись на приём.": ["Астанадағы стоматология сайты: қызметтер, бағалар, бөліп төлеу және қабылдауға жазылу.", "A dental clinic website in Astana: services, prices, installments and booking."],
+    "Сайт стоматологической клиники Dinastiya Stom Clinic в Астане на чистых HTML, CSS и JavaScript. Отдельные страницы для имплантации, брекетов, лечения, ортопедии и детской стоматологии, блок с ценами и рассрочкой, команда врачей, отзывы и быстрая запись на приём. Оформление выдержано в золотых тонах логотипа клиники.": ["Астанадағы Dinastiya Stom Clinic стоматологиялық клиникасының таза HTML, CSS және JavaScript-те жасалған сайты. Имплантация, брекеттер, емдеу, ортопедия және балалар стоматологиясына арналған бөлек беттер, бағалар мен бөліп төлеу блогы, дәрігерлер командасы, пікірлер және қабылдауға жылдам жазылу. Дизайн клиника логотипінің алтын түстерінде жасалған.", "Website of the Dinastiya Stom Clinic dental clinic in Astana, built with plain HTML, CSS and JavaScript. It has separate pages for implants, braces, treatment, prosthetics and children's dentistry, a block with prices and installments, the team of doctors, reviews and quick booking. The design follows the golden tones of the clinic logo."],
+    "Страницы услуг: имплантация, брекеты, лечение, ортопедия, детская стоматология": ["Қызмет беттері: имплантация, брекеттер, емдеу, ортопедия, балалар стоматологиясы", "Service pages: implants, braces, treatment, prosthetics, children's dentistry"],
+    "Цены, рассрочка 0-0-24, команда и отзывы с оценками из 2ГИС": ["Бағалар, 0-0-24 бөліп төлеу, команда және 2ГИС бағалары бар пікірлер", "Prices, 0-0-24 installments, the team and reviews with 2GIS ratings"],
+    "Запись на приём и быстрая связь через WhatsApp": ["Қабылдауға жазылу және WhatsApp арқылы жылдам байланыс", "Booking an appointment and quick contact via WhatsApp"],
     "Сайт котокафе": ["Котокафе сайты", "Cat cafe website"],
     "Сайт котокафе в Астане.": ["Астанадағы котокафе сайты.", "A website for a cat cafe in Astana."],
     "Сайт котокафе Kotiko в Астане на чистых HTML, CSS и JavaScript.": ["Астанадағы Kotiko котокафесінің таза HTML, CSS және JavaScript-те жасалған сайты.", "A website for the Kotiko cat cafe in Astana in plain HTML, CSS and JavaScript."],

@@ -72,6 +72,23 @@ window.PROJECTS = [
     desc: "Сайт котокафе Kotiko в Астане на чистых HTML, CSS и JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
     links: []
+  },
+  {
+    id: "dinastiyastomclinic",
+    img: "img/dinastiyastomclinic.jpg",
+    hero: "img/dinastiyastomclinic-case.jpg",
+    points: ["Страницы услуг: имплантация, брекеты, лечение, ортопедия, детская стоматология", "Цены, рассрочка 0-0-24, команда и отзывы с оценками из 2ГИС", "Запись на приём и быстрая связь через WhatsApp"],
+    title: "Dinastiya Stom Clinic",
+    type: "Сайт стоматологии",
+    cat: "web",
+    glyph: "D",
+    c1: "#c9a24a",
+    c2: "#2a1f0b",
+    featured: false,
+    short: "Сайт стоматологии в Астане: услуги, цены, рассрочка и запись на приём.",
+    desc: "Сайт стоматологической клиники Dinastiya Stom Clinic в Астане на чистых HTML, CSS и JavaScript. Отдельные страницы для имплантации, брекетов, лечения, ортопедии и детской стоматологии, блок с ценами и рассрочкой, команда врачей, отзывы и быстрая запись на приём. Оформление выдержано в золотых тонах логотипа клиники.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    links: []
   }
 ];
 
