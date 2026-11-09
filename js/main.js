@@ -197,9 +197,38 @@
       "</div>";
   };
 
+  /* главная: одна большая работа, остальные маленькие; клик по маленькой открывает её в большой карточке */
+  function renderShowcase(host) {
+    var all = window.PROJECTS, cur = all[0].id;
+    host.innerHTML = '<div class="sc-main" id="sc-main" data-reveal></div><div class="sc-grid" id="sc-grid" data-reveal style="--d:.1s"></div>';
+    var main = document.getElementById("sc-main"), grid = document.getElementById("sc-grid");
+    function cv(p) { return '<div class="cover" style="--c1:' + p.c1 + ";--c2:" + p.c2 + '">' + (p.hero || p.img ? '<img src="/' + (p.hero || p.img) + '" alt="' + t(p.title) + '" loading="lazy">' : '<span class="glyph" aria-hidden="true">' + p.glyph + "</span>") + "</div>"; }
+    function draw() {
+      var p = all.filter(function (x) { return x.id === cur; })[0];
+      main.innerHTML = '<a class="sc-pic" href="/work/' + p.id + '" aria-label="' + t(p.title) + '">' + cv(p) + "</a>" +
+        '<div class="sc-info"><p class="sc-type">' + t(p.type) + "</p><h3>" + t(p.title) + "</h3><p class=\"sc-text\">" + t(p.short) + '</p><a class="btn" href="/work/' + p.id + '">' + t("Открыть проект") + " " + ARROW + "</a></div>";
+      grid.innerHTML = all.filter(function (x) { return x.id !== cur; }).map(function (x) {
+        return '<button type="button" class="sc-card" data-id="' + x.id + '">' + cv(x) + '<span class="sc-name">' + t(x.title) + '</span><span class="sc-sub">' + t(x.type) + "</span></button>";
+      }).join("");
+    }
+    draw();
+    grid.addEventListener("click", function (e) {
+      var b = e.target.closest(".sc-card");
+      if (!b) return;
+      main.classList.add("swap");
+      setTimeout(function () {
+        cur = b.getAttribute("data-id");
+        draw();
+        main.classList.remove("swap");
+        if (window.innerWidth < 900) main.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 260);
+    });
+  }
+
   function renderWorks() {
     var host = document.getElementById("works");
     if (!host || !window.PROJECTS) return;
+    if (host.hasAttribute("data-showcase")) { renderShowcase(host); return; }
     var list = window.PROJECTS.filter(function (p) { return host.hasAttribute("data-featured") ? p.featured : true; });
     host.innerHTML = list.map(function (p, i) {
       return '<a class="work" href="/work/' + p.id + '" data-cat="' + p.cat + '" data-reveal style="--d:' + ((i % 2) * 0.12) + 's">' +
