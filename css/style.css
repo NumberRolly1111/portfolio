@@ -613,6 +613,6 @@ a.work { color: inherit; }
 .sheet .cover { border-radius: 0; }
 
 /* плавная смена работы */
-.showcase .sc-main, .showcase .sc-grid { transition: opacity .6s var(--ease), transform .6s var(--ease), filter .6s var(--ease) !important; }
+.showcase .sc-main, .showcase .sc-grid { transition: opacity .38s var(--ease), transform .38s var(--ease), filter .38s var(--ease) !important; }
 .showcase .sc-main.swap { opacity: 0 !important; transform: translateY(14px) scale(.99) !important; filter: blur(8px) !important; }
 .showcase .sc-grid.swap { opacity: 0 !important; transform: translateY(8px) !important; filter: blur(6px) !important; }

@@ -224,8 +224,8 @@
         draw();
         void main.offsetWidth;
         main.classList.remove("swap"); grid.classList.remove("swap");
-        setTimeout(function () { busy = false; }, 700);
-      }, 480);
+        setTimeout(function () { busy = false; }, 450);
+      }, 300);
     });
   }
 
@@ -365,7 +365,7 @@
     function tick() {
       var d = target - cur;
       if (Math.abs(d) < 0.4) { cur = target; jump(cur); raf = 0; return; }
-      cur += d * 0.11;
+      cur += d * 0.065;
       jump(cur);
       raf = requestAnimationFrame(tick);
     }
@@ -375,7 +375,7 @@
       e.preventDefault();
       if (!raf) { cur = window.scrollY; target = cur; }
       var dy = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
-      target = Math.max(0, Math.min(max(), target + dy));
+      target = Math.max(0, Math.min(max(), target + dy * 0.8));
       if (!raf) raf = requestAnimationFrame(tick);
     }, { passive: false });
     // клавиши, якоря и перетаскивание ползунка двигают страницу сами: синхронизируемся
