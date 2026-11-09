@@ -572,3 +572,21 @@ a.work { color: inherit; }
 .dpad button:active { border-color: var(--accent); color: var(--accent); }
 .dpad [data-d="up"] { grid-area: up; } .dpad [data-d="left"] { grid-area: left; } .dpad [data-d="down"] { grid-area: down; } .dpad [data-d="right"] { grid-area: right; }
 @media (pointer: coarse) { .dpad { display: grid; } }
+
+/* ---------- телефон: легче и быстрее, чтобы всё успевало появиться ---------- */
+@media (max-width: 680px), (pointer: coarse) {
+  .orb { filter: blur(60px); animation-duration: 90s; }
+  .orb.o1, .orb.o2, .orb.o3 { width: 90vw; height: 90vw; }
+  .js [data-reveal] { filter: blur(6px); transform: translateY(14px); transition-duration: .7s; transition-delay: min(var(--d, 0s), .24s); }
+  .js .split .w { filter: blur(6px); transform: translateY(.3em); transition-duration: .6s; transition-delay: calc(min(var(--i), 10) * 0.045s + .05s); }
+  .js [data-bg]::before { transition-duration: .7s; }
+  main { animation-duration: .4s; }
+  @keyframes pageIn { from { opacity: 0; } }
+  .hdr { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  body.leaving .veil { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .veil { transition-duration: .26s; }
+  .mnav a { filter: blur(4px); transition-duration: .4s; }
+  body.menu-open .mnav a { transition-delay: calc(var(--i) * 0.035s + .05s), calc(var(--i) * 0.035s + .05s), calc(var(--i) * 0.035s + .05s), 0s; }
+  .intro { animation-delay: .9s; }
+  .modal { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

@@ -170,7 +170,7 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -4% 0px" });
     els.forEach(function (el) { io.observe(el); });
   }
 
@@ -314,7 +314,7 @@
   splitWords();
   // небольшая пауза, чтобы первая анимация успела проиграться после загрузки шрифтов
   var intro = document.querySelector(".intro");
-  var wait = intro ? 1250 : 120;
+  var wait = intro ? (window.matchMedia("(max-width: 680px)").matches ? 900 : 1250) : 120;
   if (intro) {
     intro.addEventListener("animationend", function (e) { if (e.animationName === "introOut") intro.remove(); });
     setTimeout(function () { if (intro.parentNode) intro.remove(); }, 4000);
