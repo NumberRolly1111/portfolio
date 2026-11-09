@@ -352,4 +352,33 @@
   function startReveal() { if (started) return; started = true; setTimeout(initReveal, wait); }
   window.addEventListener("load", startReveal);
   if (document.readyState === "complete") startReveal();
+
+  /* мягкая прокрутка колёсиком, лёгкое скольжение (только мышь/трекпад, на телефоне родная) */
+  (function () {
+    if (window.matchMedia("(pointer: coarse)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var target = window.scrollY, cur = target, raf = 0;
+    function max() { return document.documentElement.scrollHeight - window.innerHeight; }
+    function jump(y) { window.scrollTo({ top: y, left: 0, behavior: "instant" }); }
+    function tick() {
+      var d = target - cur;
+      if (Math.abs(d) < 0.4) { cur = target; jump(cur); raf = 0; return; }
+      cur += d * 0.11;
+      jump(cur);
+      raf = requestAnimationFrame(tick);
+    }
+    window.addEventListener("wheel", function (e) {
+      if (e.ctrlKey || e.defaultPrevented || document.body.classList.contains("menu-open")) return;
+      if (e.target.closest && e.target.closest("textarea, input, select, [data-native-scroll]")) return;
+      e.preventDefault();
+      if (!raf) { cur = window.scrollY; target = cur; }
+      var dy = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+      target = Math.max(0, Math.min(max(), target + dy));
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: false });
+    // клавиши, якоря и перетаскивание ползунка двигают страницу сами: синхронизируемся
+    window.addEventListener("scroll", function () {
+      if (!raf) { cur = target = window.scrollY; }
+      else if (Math.abs(window.scrollY - cur) > 60) { cancelAnimationFrame(raf); raf = 0; cur = target = window.scrollY; }
+    }, { passive: true });
+  })();
 })();
