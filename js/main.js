@@ -199,7 +199,7 @@
 
   /* главная: одна большая работа, остальные маленькие; клик по маленькой открывает её в большой карточке */
   function renderShowcase(host) {
-    var all = window.PROJECTS, cur = all[0].id;
+    var all = window.PROJECTS, cur = all[0].id, busy = false;
     host.innerHTML = '<div class="sc-main" id="sc-main" data-reveal></div><div class="sc-grid" id="sc-grid" data-reveal style="--d:.1s"></div>';
     var main = document.getElementById("sc-main"), grid = document.getElementById("sc-grid");
     function cv(p) { return '<div class="cover" style="--c1:' + p.c1 + ";--c2:" + p.c2 + '">' + (p.hero || p.img ? '<img src="/' + (p.hero || p.img) + '" alt="' + t(p.title) + '" loading="lazy">' : '<span class="glyph" aria-hidden="true">' + p.glyph + "</span>") + "</div>"; }
@@ -215,13 +215,17 @@
     grid.addEventListener("click", function (e) {
       var b = e.target.closest(".sc-card");
       if (!b) return;
-      main.classList.add("swap");
+      if (busy) return;
+      busy = true;
+      main.classList.add("swap"); grid.classList.add("swap");
+      if (window.innerWidth < 900) main.scrollIntoView({ behavior: "smooth", block: "center" });
       setTimeout(function () {
         cur = b.getAttribute("data-id");
         draw();
-        main.classList.remove("swap");
-        if (window.innerWidth < 900) main.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 260);
+        void main.offsetWidth;
+        main.classList.remove("swap"); grid.classList.remove("swap");
+        setTimeout(function () { busy = false; }, 700);
+      }, 480);
     });
   }
 
@@ -355,7 +359,6 @@
 
   /* мягкая прокрутка колёсиком, лёгкое скольжение (только мышь/трекпад, на телефоне родная) */
   (function () {
-    if (window.matchMedia("(pointer: coarse)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var target = window.scrollY, cur = target, raf = 0;
     function max() { return document.documentElement.scrollHeight - window.innerHeight; }
     function jump(y) { window.scrollTo({ top: y, left: 0, behavior: "instant" }); }
