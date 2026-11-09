@@ -65,7 +65,7 @@
 
     var ftr = document.getElementById("site-footer");
     if (ftr) {
-      var flinks = NAV.map(function (n) { return '<a href="' + n[1] + '">' + n[2] + "</a>"; }).join("") + '<a href="/game">' + t("Змейка") + '</a><a href="/quiz">' + t("Обсудить проект") + "</a>";
+      var flinks = NAV.map(function (n) { return '<a href="' + n[1] + '">' + n[2] + "</a>"; }).join("") + '<a href="/quiz">' + t("Обсудить проект") + "</a>";
       ftr.innerHTML =
         '<footer class="ftr"><div class="wrap">' +
         '<a class="big-logo" href="/" aria-label="GwebStudio, ' + t("на главную") + '">' + LOGO + "<b></b></a>" +

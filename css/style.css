@@ -556,22 +556,6 @@ a.work { color: inherit; }
 .portrait b, .portrait small { position: relative; z-index: 1; }
 .portrait small { position: absolute; z-index: 1; }
 
-/* ---------- мини-игра ---------- */
-.game { width: min(100%, 560px); margin: 0 auto; }
-.game-bar { display: flex; justify-content: space-between; margin-bottom: 14px; font: 400 14px/1 var(--mono); color: var(--muted); }
-.game-bar i { font-style: normal; margin-right: 8px; }
-.game-bar b { color: var(--text); font-weight: 500; font-size: 18px; }
-.game-field { position: relative; border: 1px solid var(--line2); border-radius: var(--r); overflow: hidden; background: #07080d; }
-.game-field canvas { display: block; width: 100%; aspect-ratio: 1; touch-action: none; }
-.game-over { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; background: rgba(5, 5, 7, .72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.48s var(--ease), visibility 0s 0.48s; }
-.game-over.on { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
-.game-over h2 { font-size: clamp(22px, 4vw, 30px); }
-.game-over p { max-width: 34ch; color: var(--muted); font-size: 14px; min-height: 1em; }
-.dpad { display: none; grid-template-columns: repeat(3, 64px); grid-template-areas: ". up ." "left down right"; gap: 8px; justify-content: center; margin-top: 18px; }
-.dpad button { height: 56px; border: 1px solid var(--line2); border-radius: 10px; font-size: 20px; color: var(--text); background: rgba(255, 255, 255, .03); }
-.dpad button:active { border-color: var(--accent); color: var(--accent); }
-.dpad [data-d="up"] { grid-area: up; } .dpad [data-d="left"] { grid-area: left; } .dpad [data-d="down"] { grid-area: down; } .dpad [data-d="right"] { grid-area: right; }
-@media (pointer: coarse) { .dpad { display: grid; } }
 
 /* ---------- телефон: легче и быстрее, чтобы всё успевало появиться ---------- */
 @media (max-width: 680px), (pointer: coarse) {
