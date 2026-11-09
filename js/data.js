@@ -36,7 +36,6 @@ window.PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Cloudflare Workers", "D1"],
     links: [
       { label: "Открыть сайт", url: "https://site.w-smp.in" },
-      { label: "Код на GitHub", url: "https://github.com/NumberRolly1111/w-smp" },
       { label: "Telegram сервера", url: "https://t.me/w_smp" }
     ]
   },
