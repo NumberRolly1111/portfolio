@@ -607,3 +607,7 @@ a.work { color: inherit; }
 .sc-name { margin-top: 14px; font-size: 16px; }
 .sc-sub { margin-top: 4px; color: var(--muted); font-size: 13px; }
 @media (max-width: 980px) { .sc-main { grid-template-columns: minmax(0, 1fr); } .sc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+
+/* карточки проектов: углы поменьше */
+.cover, .case-cover .cover { border-radius: 10px; }
+.sheet .cover { border-radius: 0; }
