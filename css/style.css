@@ -590,3 +590,17 @@ a.work { color: inherit; }
   .intro { animation-delay: .9s; }
   .modal { -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
+
+/* кейс на телефоне и планшете: одна колонка */
+@media (max-width: 900px) {
+  .case-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .case-head h1 { max-width: none; }
+  .pts { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .case-facts li { flex-direction: column; gap: 4px; }
+  .case-facts b { text-align: left; }
+  .case-actions { width: 100%; }
+  .case-cta { flex-direction: column; align-items: flex-start; }
+  .case-nav { grid-template-columns: minmax(0, 1fr); }
+}
