@@ -207,7 +207,9 @@
       var p = all.filter(function (x) { return x.id === cur; })[0];
       main.innerHTML = '<a class="sc-pic" href="/work/' + p.id + '" aria-label="' + t(p.title) + '">' + cv(p) + "</a>" +
         '<div class="sc-info"><p class="sc-type">' + t(p.type) + "</p><h3>" + t(p.title) + "</h3><p class=\"sc-text\">" + t(p.short) + '</p><a class="btn" href="/work/' + p.id + '">' + t("Открыть проект") + " " + ARROW + "</a></div>";
-      grid.innerHTML = all.filter(function (x) { return x.id !== cur; }).map(function (x) {
+      var rest = all.filter(function (x) { return x.id !== cur; });
+      grid.style.setProperty("--cols", Math.min(rest.length, 5));
+      grid.innerHTML = rest.map(function (x) {
         return '<button type="button" class="sc-card" data-id="' + x.id + '">' + cv(x) + '<span class="sc-name">' + t(x.title) + '</span><span class="sc-sub">' + t(x.type) + "</span></button>";
       }).join("");
     }
