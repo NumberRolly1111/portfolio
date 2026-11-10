@@ -199,7 +199,7 @@
 
   /* главная: одна большая работа, остальные маленькие; клик по маленькой открывает её в большой карточке */
   function renderShowcase(host) {
-    var all = window.PROJECTS, cur = all[0].id, busy = false;
+    var all = window.PROJECTS, cur = (all.filter(function (x) { return x.id === "shawarma"; })[0] || all[0]).id, busy = false;
     host.innerHTML = '<div class="sc-main" id="sc-main" data-reveal></div><div class="sc-grid" id="sc-grid" data-reveal style="--d:.1s"></div>';
     var main = document.getElementById("sc-main"), grid = document.getElementById("sc-grid");
     function cv(p) { return '<div class="cover" style="--c1:' + p.c1 + ";--c2:" + p.c2 + '">' + (p.hero || p.img ? '<img src="/' + (p.hero || p.img) + '" alt="' + t(p.title) + '" loading="lazy">' : '<span class="glyph" aria-hidden="true">' + p.glyph + "</span>") + "</div>"; }
