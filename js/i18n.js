@@ -227,6 +227,13 @@
     "Заявки с сайта уходят прямо в WhatsApp": ["Сайттан өтінімдер тікелей WhatsApp-қа түседі", "Requests from the site go straight to WhatsApp"],
 
     "Kotiko": ["Kotiko", "Kotiko"],
+    "Шаурма Ашота": ["Шаурма Ашота", "Shawarma Ashota"],
+    "Сайт доставки еды": ["Тамақ жеткізу сайты", "Food delivery website"],
+    "Сайт шаурмечной в Астане: меню, конструктор шаурмы и заказ через WhatsApp.": ["Астанадағы шаурмахана сайты: мәзір, шаурма конструкторы және WhatsApp арқылы тапсырыс.", "A shawarma shop website in Astana: menu, a build-your-own constructor and ordering via WhatsApp."],
+    "Сайт шаурмечной «Шаурма Ашота» в Астане на чистых HTML, CSS и JavaScript. Яркий главный экран, меню с фильтрами, конструктор, где гость собирает шаурму сам, корзина и оформление заказа в WhatsApp, условия доставки и контакты. Статус «открыто / закрыто» считается автоматически по часам работы.": ["Астанадағы «Шаурма Ашота» шаурмаханасының таза HTML, CSS және JavaScript-те жасалған сайты. Жарқын басты экран, сүзгілері бар мәзір, қонақ шаурманы өзі құрастыратын конструктор, себет және WhatsApp-қа тапсырыс беру, жеткізу шарттары мен байланыстар. «Ашық / жабық» күйі жұмыс уақытына қарай автоматты түрде есептеледі.", "Website of the Shawarma Ashota shop in Astana, built with plain HTML, CSS and JavaScript. It has a bright main screen, a menu with filters, a constructor where guests build their own shawarma, a cart and ordering via WhatsApp, delivery terms and contacts. The open / closed status is calculated automatically from the opening hours."],
+    "Меню с фильтрами и конструктор «Собери свою» с подсчётом цены": ["Сүзгілері бар мәзір және баға есептелетін «Собери свою» конструкторы", "A menu with filters and a build-your-own constructor that calculates the price"],
+    "Корзина и оформление заказа через WhatsApp": ["Себет және WhatsApp арқылы тапсырыс беру", "A cart and checkout via WhatsApp"],
+    "Статус «открыто / закрыто», условия доставки и контакты": ["«Ашық / жабық» күйі, жеткізу шарттары және байланыстар", "Open / closed status, delivery terms and contacts"],
     "Dinastiya Stom Clinic": ["Dinastiya Stom Clinic", "Dinastiya Stom Clinic"],
     "Сайт стоматологии": ["Стоматология сайты", "Dental clinic website"],
     "Сайт стоматологии в Астане: услуги, цены, рассрочка и запись на приём.": ["Астанадағы стоматология сайты: қызметтер, бағалар, бөліп төлеу және қабылдауға жазылу.", "A dental clinic website in Astana: services, prices, installments and booking."],
